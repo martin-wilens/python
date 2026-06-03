@@ -11,10 +11,10 @@ scene = fresnel.Scene(device)
 # ---------------------------------------------------------
 sphere_positions = [
     # Top Row (on the back step)
-    [-3.0,  1.5, -2.0],  # 1. Clear Glass / Refractive
-    [-1.0,  1.5, -2.0],  # 2. Rough Frosted Glass
-    [ 1.0,  1.5, -2.0],  # 3. Smooth Orange Plastic
-    [ 3.0,  1.5, -2.0],  # 4. Perfect Chrome Mirror
+    [-2.4,  0.5, -1.0],  # 1. Clear Glass / Refractive
+    [-1.0,  1.5, -1.0],  # 2. Rough Frosted Glass
+    [ 1.0,  1.5, -1.0],  # 3. Smooth Orange Plastic
+    [ 3.0,  1.5, -1.0],  # 4. Perfect Chrome Mirror
     # Bottom Row (on the front floor)
     [-2.0, -0.5,  1.0],  # 5. Velvet / Deep Cyan Absorptive
     [ 0.0, -0.5,  1.0],  # 6. Thin Soap Bubble
@@ -93,7 +93,7 @@ scene.background_alpha = 1.0  # Make it fully opaque instead of transparent whit
 # ---------------------------------------------------------
 # 5. Render and Save
 # ---------------------------------------------------------
-out = fresnel.pathtrace(scene, samples=256, w=1680, h=1050)
+out = fresnel.pathtrace(scene, samples=2560,light_samples=64, w=1680, h=1050)
 image = PIL.Image.fromarray(out[:], mode='RGBA')
 image.save('fresnel_materials_render.png')
 print("Render saved successfully as 'fresnel_materials_render.png'!")
