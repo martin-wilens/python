@@ -75,13 +75,20 @@ back_step.material = wood_mat
 # 4. Environment & Camera Settings
 # ---------------------------------------------------------
 scene.lights = fresnel.light.cloudy()
+for light in scene.lights:
+    light.direction = light.direction  # Keep directions
+    # Multiply the light brightness to illuminate the dark faces
+    light.color = (light.color[0] * 2.5, light.color[1] * 2.5, light.color[2] * 2.5)
 
 scene.camera = fresnel.camera.Perspective(
-    position=[0.0, 2.5, 7.5],
-    look_at=[0.0, 0.5, -0.5],
+    position=[0.0, 3.5, 9.0],
+    look_at=[0.0, 0.4, 0.5],
     up=[0.0, 1.0, 0.0],
-    height=4.5
+    height=2.3
 )
+
+scene.background_color = fresnel.color.linear([0.4, 0.55, 0.7]) # Soft sky blue
+scene.background_alpha = 1.0  # Make it fully opaque instead of transparent white
 
 # ---------------------------------------------------------
 # 5. Render and Save
